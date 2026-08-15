@@ -1,0 +1,46 @@
+plugins {
+    id("multiloader-common")
+}
+
+// access common subproject tasks
+configurations {
+    commonJava {
+        canBeResolved = true
+    }
+    commonResources {
+        canBeResolved = true
+    }
+}
+
+// add common subproject dependency
+dependencies {
+    compileOnly(project(":common")) {
+        capabilities {
+            requireCapability("${group}:${mod_id}")
+        }
+    }
+    commonJava(project(path: ":common", configuration: "commonJava"))
+    commonResources(project(path: ":common", configuration: "commonResources"))
+}
+
+// add common subproject task dependencies
+compileJava {
+    dependsOn(configurations.commonJava)
+    source(configurations.commonJava)
+}
+processResources {
+    dependsOn(configurations.commonResources)
+    from(configurations.commonResources)
+}
+if (build_sources_jar == "true") {
+    tasks.named("sourcesJar", Jar) {
+        dependsOn(configurations.commonJava, configurations.commonResources)
+        from(configurations.commonJava, configurations.commonResources)
+    }
+}
+if (build_javadoc_jar == "true") {
+    tasks.named("javadoc", Javadoc) {
+        dependsOn(configurations.commonJava)
+        source(configurations.commonJava)
+    }
+}
