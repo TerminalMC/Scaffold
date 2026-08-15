@@ -205,7 +205,11 @@ module.exports = async ({github, context, core}) => {
         }
 
         for (const pullNumber of pullNumbers) {
-            const tags = pullTags.getOrInsertComputed(pullNumber, () => new Set())
+            let tags = pullTags.get(pullNumber);
+            if (!tags) {
+                tags = new Set();
+                pullTags.set(pullNumber, tags);
+            }
             tags.add(releaseTagName)
         }
     }
