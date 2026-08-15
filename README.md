@@ -2,9 +2,9 @@
 <div align="center"><center>
 
 <!--suppress CheckImageSize -->
-<img alt="Icon" width=100 src="./common/src/main/resources/assets/framework/icon.png">
+<img alt="Icon" width=100 src="./common/src/main/resources/assets/scaffold/icon.png">
 
-## Framework
+## Scaffold
 
 A custom and relatively unstable template mod for TerminalMC projects.
 
@@ -17,7 +17,7 @@ A custom and relatively unstable template mod for TerminalMC projects.
 
 [![Available on Modrinth](https://img.shields.io/modrinth/dt/raDGbHBr?label=Available%20on%20Modrinth&logo=modrinth&logoColor=%2300AF5C)](https://modrinth.com/project/raDGbHBr)
 [![Available on CurseForge](https://img.shields.io/curseforge/dt/833352?label=Available%20on%20CurseForge&logo=curseforge)](https://curseforge.com/projects/833352)
-[![Available on GitHub](https://img.shields.io/github/downloads/TerminalMC/Framework/total?label=Available%20on%20GitHub&logo=github&logoColor=white)](https://github.com/TerminalMC/Framework)
+[![Available on GitHub](https://img.shields.io/github/downloads/TerminalMC/Scaffold/total?label=Available%20on%20GitHub&logo=github&logoColor=white)](https://github.com/TerminalMC/Scaffold)
 
 </center></div>
 
@@ -53,7 +53,7 @@ your own risk.
 3. Run the `rebrandProject` gradle task.
 
 4. Replace [`LICENSE.txt`](./LICENSE.txt) and
-   [`HEADER.txt`](./common/src/main/resources/assets/framework/license/HEADER.txt) with your choice
+   [`HEADER.txt`](./common/src/main/resources/assets/scaffold/license/HEADER.txt) with your choice
    of license and header (optionally from [`licenses`](./licenses)).
 
 5. Run the `updateLicenses` gradle task.
@@ -114,7 +114,7 @@ modified work from another mod licensed MPL-2.0.
 
 ### Credits
 
-Framework is based on
+Scaffold is based on
 [Jaredlll08's MultiLoader Template](https://github.com/jaredlll08/MultiLoader-Template) and includes
 code reused under license.
 
@@ -122,6 +122,6 @@ code reused under license.
 
 [![Discord](https://img.shields.io/discord/1103153365216669797?logo=discord&label=Discord%20Server&color=%235865F2)](https://discord.terminalmc.dev)
 
-[![Issues](https://img.shields.io/github/issues/TerminalMC/Framework?logo=github&label=GitHub%20Issues)](https://github.com/TerminalMC/Framework/issues)
+[![Issues](https://img.shields.io/github/issues/TerminalMC/Scaffold?logo=github&label=GitHub%20Issues)](https://github.com/TerminalMC/Scaffold/issues)
 
-[![License](https://img.shields.io/github/license/TerminalMC/Framework?label=License&logo=github&logoColor=white)](https://github.com/TerminalMC/Framework/blob/HEAD/LICENSE.txt)
+[![License](https://img.shields.io/github/license/TerminalMC/Scaffold?label=License&logo=github&logoColor=white)](https://github.com/TerminalMC/Scaffold/blob/HEAD/LICENSE.txt)

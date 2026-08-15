@@ -1,0 +1,132 @@
+/*
+ * Scaffold by TerminalMC
+ *
+ * To the extent possible under law, the person who associated CC0 with
+ * Scaffold has waived all copyright and related or neighboring rights
+ * to Scaffold.
+ *
+ * You should have received a copy of the CC0 legalcode along with this
+ * work. If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
+ */
+
+package dev.terminalmc.scaffold.gui.screen;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.MultiLineTextWidget;
+import net.minecraft.client.gui.screens.ConfirmLinkScreen;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.CommonComponents;
+import net.minecraft.util.Util;
+
+import static dev.terminalmc.scaffold.util.Localization.localized;
+
+/**
+ * Wraps the config screen implementation and provides a backup screen for use when the config lib
+ * mod is not loaded. This allows the dependency to be defined as optional.
+ */
+public class ConfigScreenProvider {
+
+    private ConfigScreenProvider() {
+        throw new UnsupportedOperationException("This class cannot be instantiated.");
+    }
+
+    public static Screen getConfigScreen(Screen parent) {
+        try {
+//            return ClothScreenProvider.getConfigScreen(parent);
+            return YaclScreenProvider.getConfigScreen(parent);
+//            return new DisabledScreen(parent);
+        } catch (NoClassDefFoundError ignored) {
+//            return new BackupScreen(parent, "installCloth", "https://modrinth.com/project/9s6osm5g");
+            return new BackupScreen(parent, "installYacl", "https://modrinth.com/project/1eAoo2KR");
+        }
+    }
+
+    private static class BackupScreen extends Screen {
+
+        private final Screen parent;
+        private final String modKey;
+        private final String modUrl;
+
+        public BackupScreen(Screen parent, String modKey, String modUrl) {
+            super(localized("name"));
+            this.parent = parent;
+            this.modKey = modKey;
+            this.modUrl = modUrl;
+        }
+
+        @Override
+        public void init() {
+            MultiLineTextWidget messageWidget = new MultiLineTextWidget(
+                    width / 2 - 120,
+                    height / 2 - 40,
+                    localized("message", modKey),
+                    Minecraft.getInstance().font
+            );
+            messageWidget.setMaxWidth(240);
+            messageWidget.setCentered(true);
+            addRenderableWidget(messageWidget);
+
+            Button openLinkButton = Button.builder(
+                            localized("message", "viewModrinth"),
+                            (button) -> Minecraft.getInstance().setScreen(new ConfirmLinkScreen(
+                                    (open) -> {
+                                        if (open)
+                                            Util.getPlatform().openUri(modUrl);
+                                        onClose();
+                                    }, modUrl, true
+                            ))
+                    )
+                    .pos(width / 2 - 120, height / 2)
+                    .size(115, 20)
+                    .build();
+            addRenderableWidget(openLinkButton);
+
+            Button exitButton = Button.builder(CommonComponents.GUI_OK, (button) -> onClose())
+                    .pos(width / 2 + 5, height / 2)
+                    .size(115, 20)
+                    .build();
+            addRenderableWidget(exitButton);
+        }
+
+        @Override
+        public void onClose() {
+            Minecraft.getInstance().setScreen(parent);
+        }
+    }
+
+    @SuppressWarnings("unused")
+    private static class DisabledScreen extends Screen {
+
+        private final Screen parent;
+
+        public DisabledScreen(Screen parent) {
+            super(localized("name"));
+            this.parent = parent;
+        }
+
+        @Override
+        public void init() {
+            MultiLineTextWidget messageWidget = new MultiLineTextWidget(
+                    width / 2 - 120,
+                    height / 2 - 40,
+                    localized("message", "configScreenDisabled"),
+                    Minecraft.getInstance().font
+            );
+            messageWidget.setMaxWidth(240);
+            messageWidget.setCentered(true);
+            addRenderableWidget(messageWidget);
+
+            Button exitButton = Button.builder(CommonComponents.GUI_OK, (button) -> onClose())
+                    .pos(width / 2 - 115, height / 2)
+                    .size(230, 20)
+                    .build();
+            addRenderableWidget(exitButton);
+        }
+
+        @Override
+        public void onClose() {
+            Minecraft.getInstance().setScreen(parent);
+        }
+    }
+}
