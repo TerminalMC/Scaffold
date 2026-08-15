@@ -2,7 +2,7 @@
 # Modrinth publishing requires a Modrinth PAT `MODRINTH_TOKEN`
 #   Will skip without error if not present.
 # CurseForge publishing requires a CurseForge API token `CURSEFORGE_TOKEN`
-#   Will skip without error if not present.
+#   Will skip without error if not present. NOTICE ME
 # Release version and other properties are set via the root `gradle.properties` file.
 name: Release
 permissions:
