@@ -47,7 +47,7 @@ public class Commands {
                     return Command.SINGLE_SUCCESS;
                 })
                 .then(literal("quote")
-                        .then(argument("word", StringArgumentType.word())
+                        .then(argument("words", StringArgumentType.word())
                                 .suggests(((ctx, builder) -> SharedSuggestionProvider.suggest(
                                         List.of("Hello", "World"), builder)))
                                 .executes(ctx -> {
