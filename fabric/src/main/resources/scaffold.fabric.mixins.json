@@ -1,0 +1,20 @@
+{
+  "required": true,
+  "minVersion": "${mixin_version_min}",
+  "package": "dev.terminalmc.scaffold.mixin",
+  "compatibilityLevel": "JAVA_${java_version}",
+  "plugin": "dev.terminalmc.scaffold.util.MixinConfigPlugin",
+  "mixinextras": {
+    "minVersion": "${mixinextras_version_min}"
+  },
+  "mixins": [
+  ],
+  "client": [
+    "TitleScreenMixin"
+  ],
+  "server": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,40 @@
+/*
+ * Scaffold by TerminalMC
+ *
+ * To the extent possible under law, the person who associated CC0 with
+ * Scaffold has waived all copyright and related or neighboring rights
+ * to Scaffold.
+ *
+ * You should have received a copy of the CC0 legalcode along with this
+ * work. If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
+ */
+
+package dev.terminalmc.scaffold.util;
+
+import dev.terminalmc.scaffold.Scaffold;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+
+@SuppressWarnings("unused")
+public class Localization {
+
+    private Localization() {
+        throw new UnsupportedOperationException("This class cannot be instantiated.");
+    }
+
+    public static String translationKey(String path) {
+        return Scaffold.MOD_ID + "." + path;
+    }
+
+    public static String translationKey(String domain, String path) {
+        return domain + "." + Scaffold.MOD_ID + "." + path;
+    }
+
+    public static MutableComponent localized(String path, Object... args) {
+        return Component.translatable(translationKey(path), args);
+    }
+
+    public static MutableComponent localized(String domain, String path, Object... args) {
+        return Component.translatable(translationKey(domain, path), args);
+    }
+}
