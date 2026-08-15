@@ -200,7 +200,7 @@ module.exports = async ({github, context, core}) => {
         } else {
             console.log(`Could not find a previous tag for loader ${loaderName} and release tag name ${releaseTagName}`);
 
-            pullNumbers = getAllClosedPullNumbers();
+            pullNumbers = await getAllClosedPullNumbers();
             console.log(`Found ${pullNumbers.size} closed PRs: ${[...pullNumbers]}`);
         }
 
