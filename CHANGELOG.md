@@ -58,7 +58,7 @@ ___
 - Fixed an issue causing collision avoidance to erroneously detect certain entities.
 - Updated German translation (jemand513) (#28)
 
-## 1.102.0 [2026-04-09]
+## 1.102.0 [2026-08-15]
 
 - Updated to mc26.1.2.
 
