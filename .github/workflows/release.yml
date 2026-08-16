@@ -205,7 +205,7 @@ jobs:
 
       - name: Notify PRs
         uses: actions/github-script@v9
-        if: inputs.notify-prs > 0 && steps.github.outcome == 'success'
+        if: inputs.notify-pr-months > 0 && steps.github.outcome == 'success'
         continue-on-error: true
         env:
           SCAN_MONTHS: ${{ github.event.inputs.notify-pr-months }}
