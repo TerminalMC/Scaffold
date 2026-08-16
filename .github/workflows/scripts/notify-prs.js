@@ -93,7 +93,7 @@ module.exports = async ({github, context, core}) => {
      * @returns {Set<number>}
      */
     function getPullNumbers(comparison) {
-        const mergeRegex = /Merge pull request #(\d+) from/i;
+        const mergeRegex = /Merge pull request #(\d+)/i;
         /** @type {Set<number>} */
         const pullNumbers = new Set();
 
