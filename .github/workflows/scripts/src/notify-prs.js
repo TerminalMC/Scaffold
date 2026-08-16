@@ -189,7 +189,7 @@ module.exports = async ({github, context, core}) => {
             .filter((release) => release.published_at && new Date(release.published_at).getTime() >= cutoff)
             .map((release) => [release.tag_name, release])
     );
-    console.log(`Filtered ${recentReleases.length} recent releases`);
+    console.log(`Filtered ${recentReleases.length} recent releases from the last ${scanMonths} months`);
     if (recentReleases.length > 0) {
         console.log(`Oldest recent release tag is ${recentReleases[recentReleases.length - 1].tag_name}`);
     }
